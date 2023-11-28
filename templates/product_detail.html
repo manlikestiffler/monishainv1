@@ -1,0 +1,79 @@
+{% extends './main.html' %}
+
+{% block content %}
+
+<style>
+
+  .layout__box1 {
+    width: 90%;
+    max-width: 48rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -16%);
+    background-color: var(--color-dark);
+    border-radius: 1rem;
+    box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+</style>
+
+    <a href="{% url 'issue-items' product.id %}"><div class='btn btn-danger'>ISSUE THIS ITEM</div></a>
+    <a href="{% url 'receive-items' product.id %}"><div class='btn btn-danger'>RECEIVE THIS ITEM</div></a>
+        <br><br>
+        <div class="display_table">
+          <table class="table table-success table-striped" style=" 
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 20px;
+            box-shadow: 12px 12px 20px 6px #2e6da4;
+            font-size: 20px;
+            text-align: center;
+            width: 95%;
+            margin: auto;
+            text-align: center;
+          ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ITEM NAME</th>
+                <th>QUANTITY IN STORE</th>
+            </tr>
+        </thead>
+            <tr>
+              <td>{{product.id}}</td>
+              <td>{{product.productname}}</td>
+              <td>{{product.quantity}}</td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div class="container">
+          <div class="layout__box1">
+            <div class="layout__boxHeader">
+              <div class="layout__boxTitle">
+                <a href="{% url 'home' %}">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                    <title>arrow-left</title>
+                    <path
+                      d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+                    </path>
+                  </svg>
+                </a>
+                <h3>Product Description</h3>
+              </div>
+            </div>
+            <div class="layout__body" >
+                <h2>{{product.productname}}</h2>
+                <hr>
+                <p>{{product.description|linebreaks}}</p>
+          </div>
+        </div>
+
+  
+
+  {% endblock %}

@@ -1,0 +1,65 @@
+{% extends './main.html' %}  
+
+{% block content %}
+<main class="main">
+  <div class="container">    
+                {% if messages %}
+                <ul class="messages" style="AAAAAAAAAAAA
+                list-style: none;
+                background-color: #2e6da4;
+                color: white;
+                box-shadow: 12px 12px 12px #e61c66;
+                text-align: center;
+                ">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+                {% endif %}
+    <div class = "table" style="padding-top: 50px;">
+            <table class="table table-success table-striped" style=" 
+            border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 20px;
+                box-shadow: 12px 12px 20px 6px #2e6da4;
+                font-size: 20px;
+                text-align: center;
+                width: 100%;
+                margin: auto;
+                text-align: center;
+            ">
+            <thead>
+                <tr class="table-info">
+                <th>ID</th>
+                <th>CATEGORY</th>
+                <th>ITEM NAME</th>
+                <th>QUANTITY IN STORE</th>
+                <th>ISSUE QUANTITY</th>
+                <th>RECEIVE QUANTITY</th>
+                <th>ISSUED BY</th>
+                <th>RECEIVED BY</th>
+                <th>LAST UPDATED</th>
+                </tr>
+            </thead>
+            {% for product in history %}
+                <tr>  
+                <td>{{product.id}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.productname}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.issue_quantity}}</td>
+                <td>{{product.receive_quantity}}</td>
+                <td>{{product.issue_by}}</td>
+                <td>{{product.receive_by}}</td>
+                <td>{{product.updated|timesince}}</td>
+                </tr>
+            {% endfor %}
+            </table>
+      </div>
+  </div>
+</main>
+
+{% endblock  %}
+   

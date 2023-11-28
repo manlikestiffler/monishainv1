@@ -1,0 +1,83 @@
+{% extends './main.html' %}  
+
+{% block content %}
+
+<main class="main">
+  <div class="container">
+    <div class="button" style=
+    "padding-left: 430px;
+    padding-top:50px;">
+        <a class="btn btn--main" href="{% url 'create-product' %}" style="font-size:20px;">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <title>add</title>
+            <path
+              d="M16.943 0.943h-1.885v14.115h-14.115v1.885h14.115v14.115h1.885v-14.115h14.115v-1.885h-14.115v-14.115z"
+            ></path>
+          </svg>
+          Add Product
+        </a>
+
+        <a class="btn btn--main" href="{% url 'list-history' %}" style="font-size:20px;">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <title>add</title>
+            <path
+              d="M16.943 0.943h-1.885v14.115h-14.115v1.885h14.115v14.115h1.885v-14.115h14.115v-1.885h-14.115v-14.115z"
+            ></path>
+          </svg>
+          View Your History
+        </a>
+        <br>
+        <a href="{% url 'delete-all' %}" style="
+        padding-left:170px;
+        padding-top:30px;
+        font-size:30px;
+        
+
+        "><i class="fa-solid fa-trash fa-beat-fade" style="color: #f01414;"></i></a>
+
+    </div>
+
+        
+    <div class = "table" style="padding-top: 50px;">
+            <table class="table table-success table-striped" style=" 
+            border-bottom-right-radius: 20px;
+                border-bottom-left-radius: 20px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 20px;
+                box-shadow: 12px 12px 20px 6px #2e6da4;
+                font-size: 20px;
+                text-align: center;
+                width: 100%;
+                margin: auto;
+                text-align: center;
+            ">
+            <thead>
+                <tr class="table-info">
+                <th>ID</th>
+                <th>CATEGORY</th>
+                <th>ITEM NAME</th>
+                <th>QUANTITY IN STORE</th>
+                <th>LAST UPDATED</th>
+                <th>DATE CREATED</th>
+                <th>DELETE</th>
+                </tr>
+            </thead>
+            {% for product in products %}
+                <tr>
+                <td>{{product.id}}</td>
+                <td>{{product.category}}</td>
+                <td><a href="{% url 'update-product' product.id %}" style="color:red;">{{product.productname}}</a></td>
+                <td><a href="{% url 'product-detail' product.id %}"  style="color:red;">{{product.quantity}}</a></td>
+                <td>{{product.updated|timesince}}</td>
+                <td>{{product.created|timesince}}</td>
+                <td><a href="{% url 'delete-product' product.id %}"><i class="fa-solid fa-trash fa-beat-fade" style="color: #f01414;"></i></a></td>
+                </tr>
+            {% endfor %}
+            </table>
+      </div>
+  </div>
+</main>
+
+{% endblock  %}
+   
